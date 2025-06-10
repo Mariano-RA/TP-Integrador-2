@@ -1,3 +1,34 @@
+def generar_conjunto(dni):
+    conjunto = set(dni)
+    return conjunto
+
+def realizar_union(conjunto_1, conjunto_2):
+    return conjunto_1.union(conjunto_2)
+
+def realizar_interseccion(conjunto_1, conjunto_2):
+    return conjunto_1.intersection(conjunto_2)
+
+def realizar_diferencia(conjunto_1, conjunto_2):
+    return conjunto_1.difference(conjunto_2)
+
+def realizar_diferencia_simetrica(conjunto_1, conjunto_2):
+    return conjunto_1.symmetric_difference(conjunto_2)
+
+def realizar_operaciones(conjunto_1, conjunto_2):
+    union_resultado = realizar_union(conjunto_1, conjunto_2)
+    print(f"Unión: {union_resultado}")
+
+    interseccion_resultado = realizar_interseccion(
+        conjunto_1, conjunto_2)
+    print(f"Intersección: {interseccion_resultado}")
+
+    diferencia_resultado = realizar_diferencia(conjunto_1, conjunto_2)
+    print(f"Diferencia: {diferencia_resultado}")
+
+    diferencia_simetrica_resultado = realizar_diferencia_simetrica(
+        conjunto_1, conjunto_2)
+    print(f"Diferencia Simétrica: {diferencia_simetrica_resultado}")
+
 def procesar_anios():
     listado_anios = []
     anios_pares = 0
