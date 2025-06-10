@@ -1,3 +1,26 @@
+def contar_frecuencias(dni):
+    frecuencia_digitos = {}
+    for digito in dni:
+        if digito in frecuencia_digitos:
+            frecuencia_digitos[digito] += 1
+        else:
+            frecuencia_digitos[digito] = 1
+    return frecuencia_digitos
+
+def sumar_digitos(dni):
+    suma_total = sum(int(digito) for digito in dni)
+    return suma_total
+
+
+def evaluar_digito_exclusivo(listado_dni): #Expresion Natural Nº 4: "Un dígito es exclusivo si aparece únicamente en un solo DNI del grupo."
+    digitos_exclusivos = set()
+    for i, dni in enumerate(listado_dni):
+        digitos_dni = set(dni)
+        for digito in digitos_dni:
+            if sum(1 for d in listado_dni if digito in d) == 1:
+                digitos_exclusivos.add(digito)
+    return digitos_exclusivos
+
 def procesar_anios():
     listado_anios = []
     anios_pares = 0
@@ -125,3 +148,25 @@ def procesar_dnis():
     resultados = evaluar_condiciones(listado_dni, funcion_condicion)
     for i, resultado in enumerate(resultados):
         print(f"DNI {listado_dni[i]}: {resultado}")
+
+def menu():
+    print("\n=== Menú de Ejercicios ===")    
+    print("\n1. Operaciones con DNIs")
+    print("2. Operaciones con años de nacimiento")
+    print("3. Salir")
+    opcion = input("Elige el ejercicio a ejecutar: ")
+    return opcion
+
+if __name__ == "__main__":
+    while True:
+        opcion = menu()
+
+        if opcion == "1":
+            procesar_dnis()
+        elif opcion == "2":
+            procesar_anios()
+        elif opcion == "3":
+            print("Saliendo del programa...")
+            break
+        else:
+            print("Opción no válida. Por favor, elija una opción del menú.")
