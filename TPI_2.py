@@ -1,3 +1,28 @@
+def evaluar_condiciones(listado_dnis, funcion_condicion):
+    resultados = []
+    for dni in listado_dnis:
+        resultado = funcion_condicion(dni) 
+        resultados.append(resultado)
+    return resultados
+
+def validar_dni(dni):
+    if not (7 <= len(dni) <= 9) or not dni.isdigit():
+        return False
+    return True
+
+
+def es_par(anio):
+    return anio % 2 == 0
+
+def es_bisiesto(anio):
+    if (anio % 4 == 0 and anio % 100 != 0) or (anio % 400 == 0):
+        return True
+    else:
+        return False
+
+def calcular_edad(anio_nacimiento, anio_actual):
+    return anio_actual - anio_nacimiento
+
 def generar_conjunto(dni):
     conjunto = set(dni)
     return conjunto
