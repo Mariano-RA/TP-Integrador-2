@@ -1,4 +1,29 @@
-def contar_frecuencias(dni):
+def evaluar_condiciones(listado_dnis, funcion_condicion):
+    resultados = []
+    for dni in listado_dnis:
+        resultado = funcion_condicion(dni) 
+        resultados.append(resultado)
+    return resultados
+
+def validar_dni(dni):
+    if not (7 <= len(dni) <= 9) or not dni.isdigit():
+        return False
+    return True
+
+
+def es_par(anio):
+    return anio % 2 == 0
+
+def es_bisiesto(anio):
+    if (anio % 4 == 0 and anio % 100 != 0) or (anio % 400 == 0):
+        return True
+    else:
+        return False
+
+def calcular_edad(anio_nacimiento, anio_actual):
+    return anio_actual - anio_nacimiento
+
+  def contar_frecuencias(dni):
     frecuencia_digitos = {}
     for digito in dni:
         if digito in frecuencia_digitos:
@@ -20,6 +45,38 @@ def evaluar_digito_exclusivo(listado_dni): #Expresion Natural Nº 4: "Un dígito
             if sum(1 for d in listado_dni if digito in d) == 1:
                 digitos_exclusivos.add(digito)
     return digitos_exclusivos
+
+def generar_conjunto(dni):
+    conjunto = set(dni)
+    return conjunto
+
+def realizar_union(conjunto_1, conjunto_2):
+    return conjunto_1.union(conjunto_2)
+
+def realizar_interseccion(conjunto_1, conjunto_2):
+    return conjunto_1.intersection(conjunto_2)
+
+def realizar_diferencia(conjunto_1, conjunto_2):
+    return conjunto_1.difference(conjunto_2)
+
+def realizar_diferencia_simetrica(conjunto_1, conjunto_2):
+    return conjunto_1.symmetric_difference(conjunto_2)
+
+def realizar_operaciones(conjunto_1, conjunto_2):
+    union_resultado = realizar_union(conjunto_1, conjunto_2)
+    print(f"Unión: {union_resultado}")
+
+    interseccion_resultado = realizar_interseccion(
+        conjunto_1, conjunto_2)
+    print(f"Intersección: {interseccion_resultado}")
+
+    diferencia_resultado = realizar_diferencia(conjunto_1, conjunto_2)
+    print(f"Diferencia: {diferencia_resultado}")
+
+    diferencia_simetrica_resultado = realizar_diferencia_simetrica(
+        conjunto_1, conjunto_2)
+    print(f"Diferencia Simétrica: {diferencia_simetrica_resultado}")
+
 
 def procesar_anios():
     listado_anios = []
