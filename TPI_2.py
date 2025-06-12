@@ -1,3 +1,21 @@
+#EXPRESIÓN NATURAL
+def calcular_raiz_digital(dni_str):
+    """
+    Calcula la raíz digital de un número.
+    Suma los dígitos repetidamente hasta obtener un solo dígito.
+    """
+    numero_actual = dni_str
+    # Repetimos el proceso mientras el número tenga más de un dígito
+    while len(numero_actual) > 1:
+        suma_temporal = 0
+        # Sumamos los dígitos del número actual
+        for digito in numero_actual:
+            suma_temporal += int(digito)
+        # El nuevo número para la siguiente iteración es la suma que calculamos
+        numero_actual = str(suma_temporal)
+    
+    return int(numero_actual)
+
 def evaluar_condiciones(listado_dnis, funcion_condicion):
     resultados = []
     for dni in listado_dnis:
