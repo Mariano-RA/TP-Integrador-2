@@ -41,7 +41,7 @@ def es_bisiesto(anio):
 def calcular_edad(anio_nacimiento, anio_actual):
     return anio_actual - anio_nacimiento
 
-  def contar_frecuencias(dni):
+def contar_frecuencias(dni):
     frecuencia_digitos = {}
     for digito in dni:
         if digito in frecuencia_digitos:
@@ -236,6 +236,32 @@ def procesar_dnis():
     resultados = evaluar_condiciones(listado_dni, funcion_condicion)
     for i, resultado in enumerate(resultados):
         print(f"DNI {listado_dni[i]}: {resultado}")
+
+    print("\n=== Evaluación de Expresiones Naturales ===")
+    if len(listado_dni) < 2:
+        print("Se necesitan al menos 2 DNIs para evaluar las expresiones.")
+        return
+
+    #print("\nExpresión 1: Dígitos que aparecen exactamente en 2 DNI distintos")
+    
+
+    print("\nExpresión 2: Dígitos que aparecen exactamente en 2 DNI distintos")
+    digitos_especiales_2 = encontrar_digitos_especiales(listado_dni)
+    print(f"Dígitos especiales: {digitos_especiales_2}")
+
+    #print("\nExpresión 3: Dígitos en A y C pero no en D")
+    
+
+    print("\nExpresión 4: Dígitos exclusivos (aparecen en un solo DNI)")
+    digitos_exclusivos = evaluar_digito_exclusivo(listado_dni)
+    print(f"Dígitos exclusivos: {digitos_exclusivos}")
+
+    print("\nExpresión 5: Dígitos compartidos entre B y C pero no en A")
+    if len(listado_dni) < 3:
+        print("Se necesitan al menos 3 DNIs para esta expresión")
+    else:
+        digitos_compartidos_BC = compartidos_sin_A(listado_dni)
+        print(f"Dígitos compartidos entre B y C pero no en A: {digitos_compartidos_BC}")
 
 def menu():
     print("\n=== Menú de Ejercicios ===")    
