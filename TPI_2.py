@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 #EXPRESIÓN NATURAL
 def verificar_validez_digito(digito, grupo):
     # Se convierte el dígito a string para poder buscarlo dentro de los DNI
@@ -276,7 +278,7 @@ def procesar_dnis():
     if len(listado_dni) < 3:
         print("Se necesitan al menos 3 DNIs para esta expresión")
     else:
-        digitos_compartidos_BC = compartidos_sin_A(listado_dni)
+        digitos_compartidos_BC = compartidos_sin_A(listado_dni[0], listado_dni[1], listado_dni[2])
         print(f"Dígitos compartidos entre B y C pero no en A: {digitos_compartidos_BC}")
 
 def menu():
