@@ -64,6 +64,19 @@ def evaluar_digito_exclusivo(listado_dni): #Expresion Natural Nº 4: "Un dígito
                 digitos_exclusivos.add(digito)
     return digitos_exclusivos
 
+# Función para Expresión 2
+def encontrar_digitos_especiales(lista_dnis):
+    conjuntos = [generar_conjunto(dni) for dni in lista_dnis]
+    contador = defaultdict(int)
+
+    for conjunto in conjuntos:
+        for digito in conjunto:
+            contador[digito] += 1
+
+    especiales = {digito for digito, cantidad in contador.items() if cantidad == 2}
+    return especiales
+
+
 def generar_conjunto(dni):
     conjunto = set(dni)
     return conjunto
