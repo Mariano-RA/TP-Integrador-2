@@ -163,6 +163,14 @@ def verificar_digito_comun(conjuntos):
         print(f"Dígito(s) compartido(s) en todos los conjuntos: {interseccion}")
     else:
         print("No hay ningún dígito compartido en todos los conjuntos.")
+#EXPRESION NATURAL 3
+def digitos_relevantes_AyC_noD(dni_a, dni_c, dni_d):
+    set_a = set(str(dni_a))
+    set_c = set(str(dni_c))
+    set_d = set(str(dni_d))
+    interseccion_ac = set_a.intersection(set_c)
+    resultado = interseccion_ac.difference(set_d)
+    return resultado
 
 
 def compartidos_sin_A(dni_a, dni_b, dni_c):
@@ -250,7 +258,15 @@ def procesar_dnis():
     print(f"Dígitos especiales: {digitos_especiales_2}")
 
     #print("\nExpresión 3: Dígitos en A y C pero no en D")
-    
+    if len(listado_dni) >= 4:
+        dni_a = listado_dni[0]
+        dni_c = listado_dni[2]
+        dni_d = listado_dni[3]
+        relevantes = digitos_relevantes_AyC_noD(dni_a, dni_c, dni_d)
+        print("\nExpresión 3: Dígitos en A y C pero no en D")
+        print(f"Dígitos relevantes: {relevantes}")
+    else:
+        print("\nExpresión 3: Se requieren al menos 4 DNIs para esta expresión.")
 
     print("\nExpresión 4: Dígitos exclusivos (aparecen en un solo DNI)")
     digitos_exclusivos = evaluar_digito_exclusivo(listado_dni)
