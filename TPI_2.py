@@ -115,42 +115,37 @@ def procesar_anios():
     listado_anios = []
     anios_pares = 0
     anios_impares = 0
+
     print("=== Ingreso de años de nacimiento ===")
-    cantidad = int(input("Cuantos años de nacimiento desea ingresar? "))
+    cantidad = int(input("Cuántos años de nacimiento desea ingresar? "))
     for _ in range(cantidad):
         anio = int(input("\nIngrese un año de nacimiento: "))
-        if es_par(int(anio)):
+        if es_par(anio):
             anios_pares += 1
         else:
             anios_impares += 1
-        listado_anios.append(int(anio))
-    gen_z = True
-    for anio in listado_anios:
-        if anio < 2000:
-            gen_z = False
-            break
-    hay_bisiesto = False
-    for anio in listado_anios:
-        if es_bisiesto(anio):
-            hay_bisiesto = True
+        listado_anios.append(anio)
+
+    gen_z = all(anio >= 2000 for anio in listado_anios)
+    hay_bisiesto = any(es_bisiesto(anio) for anio in listado_anios)
+
     anio_actual = 2025
-    listado_edades = []
-    for anio in listado_anios:
-        edad = calcular_edad(anio, anio_actual)
-        listado_edades.append(edad)
-    producto_cartesiano = []
-    for anio in listado_anios:
-        for edad in listado_edades:
-            producto_cartesiano.append((anio, edad))
+    listado_edades = [calcular_edad(anio, anio_actual) for anio in listado_anios]
+
+    producto_cartesiano = list(zip(listado_anios, listado_edades))
+
+    # Mostrar resultados
     print("\n\n=== Resultados ===")
     print(f"\nCantidad de años pares: {anios_pares}")
     print(f"Cantidad de años impares: {anios_impares}")
+
     if gen_z:
         print("\nGrupo Z")
         print("Todos los años ingresados son posteriores al 2000")
+
     if hay_bisiesto:
         print("\nTenemos un año especial")
-    
+
     print("\nProducto cartesiano de años y edades:")
     for anio, edad in producto_cartesiano:
         print(f"Año: {anio}, Edad: {edad}")
