@@ -1,20 +1,20 @@
 #EXPRESIÓN NATURAL
-def calcular_raiz_digital(dni_str):
-    """
-    Calcula la raíz digital de un número.
-    Suma los dígitos repetidamente hasta obtener un solo dígito.
-    """
-    numero_actual = dni_str
-    # Repetimos el proceso mientras el número tenga más de un dígito
-    while len(numero_actual) > 1:
-        suma_temporal = 0
-        # Sumamos los dígitos del número actual
-        for digito in numero_actual:
-            suma_temporal += int(digito)
-        # El nuevo número para la siguiente iteración es la suma que calculamos
-        numero_actual = str(suma_temporal)
+def verificar_validez_digito(digito, grupo):
+    # Se convierte el dígito a string para poder buscarlo dentro de los DNI
+    digito_a_buscar = str(digito)
     
-    return int(numero_actual)
+    # Se inicializa un contador para las personas que cumplen la condición
+    contador = 0
+    
+    # Se recorre cada persona en el grupo
+    for persona in grupo:
+        # Si el dígito está en el DNI de la persona...
+        if digito_a_buscar in persona['DNI']:
+            # ...se incrementa el contador
+            contador += 1
+            
+    # La función devuelve True solo si el contador es 4 o más
+    return contador >= 4
 
 def evaluar_condiciones(listado_dnis, funcion_condicion):
     resultados = []
