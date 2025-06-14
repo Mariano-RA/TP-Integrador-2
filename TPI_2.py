@@ -246,7 +246,12 @@ def procesar_dnis():
     if len(listado_dni) < 2:
         print("Se necesitan al menos 2 DNIs para evaluar las expresiones.")
         return
-
+    print('\nExpresión 1: "Un dígito es válido si aparece en los DNI de al menos 4 personas del grupo."')
+    # Armamos la lista de personas como espera la función, con clave 'DNI'
+    grupo = [{'DNI': dni} for dni in listado_dni]
+    digitos_validos = [str(d) for d in range(10) if verificar_validez_digito(d, grupo)]
+    print(f"Dígitos válidos según la expresión 1: {set(digitos_validos)}")
+    
     #print("\nExpresión 1: Dígitos que aparecen exactamente en 2 DNI distintos")
     
 
